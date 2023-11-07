@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63152AFA836800ACF1AA /* AppDelegate.swift */; };
 		45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63172AFA836800ACF1AA /* SceneDelegate.swift */; };
-		45DB631A2AFA836800ACF1AA /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63192AFA836800ACF1AA /* NewsTableViewController.swift */; };
+		45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63192AFA836800ACF1AA /* NewsListViewController.swift */; };
 		45DB631D2AFA836800ACF1AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45DB631B2AFA836800ACF1AA /* Main.storyboard */; };
 		45DB631F2AFA836900ACF1AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45DB631E2AFA836900ACF1AA /* Assets.xcassets */; };
 		45DB63222AFA836900ACF1AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */; };
@@ -43,7 +43,7 @@
 		45DB63122AFA836800ACF1AA /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DB63152AFA836800ACF1AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45DB63172AFA836800ACF1AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		45DB63192AFA836800ACF1AA /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		45DB63192AFA836800ACF1AA /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		45DB631C2AFA836800ACF1AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45DB631E2AFA836900ACF1AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45DB63212AFA836900ACF1AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			children = (
 				45DB63152AFA836800ACF1AA /* AppDelegate.swift */,
 				45DB63172AFA836800ACF1AA /* SceneDelegate.swift */,
-				45DB63192AFA836800ACF1AA /* NewsTableViewController.swift */,
+				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
 				45DB63492AFA946F00ACF1AA /* NewsClient.swift */,
 				45DB634B2AFA994300ACF1AA /* NewsResponse.swift */,
 				45DB631B2AFA836800ACF1AA /* Main.storyboard */,
@@ -266,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45DB631A2AFA836800ACF1AA /* NewsTableViewController.swift in Sources */,
+				45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */,
 				45DB634C2AFA994300ACF1AA /* NewsResponse.swift in Sources */,
 				45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */,
 				45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */,
