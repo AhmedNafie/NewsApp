@@ -32,7 +32,6 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="xXX-Cu-NSV"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BhB-3I-kj6"/>
-                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="xz3-BN-X8y"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -45,6 +44,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cfy-i4-tRW" secondAttribute="bottom" id="hw0-fe-1OP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newsTableView" destination="cfy-i4-tRW" id="Wla-V5-KE7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
