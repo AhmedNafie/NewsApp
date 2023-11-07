@@ -105,15 +105,11 @@
 		45DB63142AFA836800ACF1AA /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				45DB63152AFA836800ACF1AA /* AppDelegate.swift */,
-				45DB63172AFA836800ACF1AA /* SceneDelegate.swift */,
-				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
-				45DB63492AFA946F00ACF1AA /* NewsClient.swift */,
-				45DB634B2AFA994300ACF1AA /* NewsResponse.swift */,
-				45DB631B2AFA836800ACF1AA /* Main.storyboard */,
-				45DB631E2AFA836900ACF1AA /* Assets.xcassets */,
-				45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */,
-				45DB63232AFA836900ACF1AA /* Info.plist */,
+				45DB63532AFAC03B00ACF1AA /* Common */,
+				45DB63572AFAC09D00ACF1AA /* Networking */,
+				45DB63562AFAC08D00ACF1AA /* Model */,
+				45DB63542AFAC05500ACF1AA /* View */,
+				45DB63552AFAC07C00ACF1AA /* Controller */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -133,6 +129,50 @@
 				45DB63382AFA836900ACF1AA /* NewsAppUITestsLaunchTests.swift */,
 			);
 			path = NewsAppUITests;
+			sourceTree = "<group>";
+		};
+		45DB63532AFAC03B00ACF1AA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				45DB63152AFA836800ACF1AA /* AppDelegate.swift */,
+				45DB63172AFA836800ACF1AA /* SceneDelegate.swift */,
+				45DB631E2AFA836900ACF1AA /* Assets.xcassets */,
+				45DB63232AFA836900ACF1AA /* Info.plist */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		45DB63542AFAC05500ACF1AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45DB631B2AFA836800ACF1AA /* Main.storyboard */,
+				45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45DB63552AFAC07C00ACF1AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		45DB63562AFAC08D00ACF1AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45DB634B2AFA994300ACF1AA /* NewsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		45DB63572AFAC09D00ACF1AA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				45DB63492AFA946F00ACF1AA /* NewsClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,7 +493,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 424W3J2WNA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -481,7 +521,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 424W3J2WNA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Common/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
