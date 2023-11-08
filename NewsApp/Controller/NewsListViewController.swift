@@ -58,6 +58,10 @@ private extension NewsListViewController {
         guard let url = NewsClient.endPoints.news.url else { return }
         NewsClient.requestNews(url: url) { [weak self] response, error in
             guard let self = self else { return }
+            if let error = error {
+                self.showAlert(with: error.localizedDescription)
+                return
+            }
             self.activityIndicator.stopAnimating()
             self.news = response
             self.newsTableView.reloadData()
