@@ -121,9 +121,9 @@
                     </view>
                     <connections>
                         <outlet property="contentLabel" destination="x4z-NF-cIf" id="QLj-ZR-2rQ"/>
-                        <outlet property="headlinesLabel" destination="fxe-nm-CYw" id="66L-ZF-6hi"/>
                         <outlet property="newsImageView" destination="T5V-GA-Ish" id="gaI-p7-2ds"/>
                         <outlet property="ratingTextField" destination="fOz-ZT-eOK" id="qn7-OJ-EPW"/>
+                        <outlet property="titleLabel" destination="fxe-nm-CYw" id="66L-ZF-6hi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f91-v3-KPZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
