@@ -30,8 +30,10 @@ extension NewsListViewController: UITableViewDataSource {
         if let url = news?.articles[indexPath.row].urlToImage {
             let URL = URL(string: url)
             NewsClient.requestImageFile(url: URL!) { image, error in
-                cell.imageView?.image = image
-                cell.setNeedsLayout()
+                DispatchQueue.main.async {
+                    cell.imageView?.image = image
+                    cell.setNeedsLayout()
+                }
             }
         }
         return cell
