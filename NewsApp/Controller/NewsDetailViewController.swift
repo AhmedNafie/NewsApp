@@ -28,6 +28,7 @@ class NewsDetailViewController: UIViewController {
 
 private extension NewsDetailViewController {
     func configureArticle() {
+        newsImageView.image = UIImage(named: "newsPlaceHolder")
         titleLabel.text = article?.title
         contentLabel.text = article?.description
         if let url = URL(string: article?.urlToImage ?? "") {

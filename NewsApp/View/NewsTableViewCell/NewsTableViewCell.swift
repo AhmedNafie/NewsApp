@@ -16,5 +16,6 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         newsImageView.image = nil
+        newsImageView.image = UIImage(named: "newsPlaceHolder")
     }
 }
