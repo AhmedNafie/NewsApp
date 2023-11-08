@@ -8,7 +8,6 @@
 import UIKit
 
 class NewsDetailViewController: UIViewController {
-    let allowedRatings = ["1", "2", "3", "4", "5"]
     @IBOutlet weak var headlinesLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
@@ -21,13 +20,10 @@ class NewsDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        for rating in allowedRatings {
-            if ratingTextField.text == rating  {
-                presentAlert(title: "Rating", message: "You have rated the article successfully")
-            } else {
-                presentAlert(title: "Rating", message: "Please choose a number from 1 to 5")
-            }
-        }
+        let allowedRatings = 1...5
+        let rating = Int(ratingTextField.text ?? "0")
+        let message = allowedRatings.contains(rating ?? 0) ? Constants.Strings.ratingMessageSucessfull : Constants.Strings.ratingMessageFailed
+        presentAlert(title: Constants.Strings.ratingMessageTitle, message: message)
         
     }
     
@@ -46,7 +42,7 @@ class NewsDetailViewController: UIViewController {
     
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction.init(title: "Ok", style: .default)
+        let action = UIAlertAction.init(title: Constants.Strings.okText, style: .default)
         alert.addAction(action)
         present(alert, animated: true)
     }
