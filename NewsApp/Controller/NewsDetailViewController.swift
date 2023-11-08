@@ -11,7 +11,7 @@ class NewsDetailViewController: UIViewController {
     let allowedRatings = ["1", "2", "3", "4", "5"]
     @IBOutlet weak var headlinesLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
-    @IBOutlet weak var newsDetailTextView: UITextView!
+    @IBOutlet weak var contentLabel: UILabel!
     
     @IBOutlet weak var ratingTextField: UITextField!
     var article: Article?
@@ -24,9 +24,9 @@ class NewsDetailViewController: UIViewController {
         for rating in allowedRatings {
             if ratingTextField.text == rating  {
                 presentAlert(title: "Rating", message: "You have rated the article successfully")
+            } else {
+                presentAlert(title: "Rating", message: "Please choose a number from 1 to 5")
             }
-            
-            presentAlert(title: "Rating", message: "Please choose a number from 1 to 5")
         }
         
     }
@@ -41,7 +41,7 @@ class NewsDetailViewController: UIViewController {
         }
         
         headlinesLabel.text = article?.title
-        newsDetailTextView.text = article?.content
+        contentLabel.text = article?.description
     }
     
     func presentAlert(title: String, message: String) {
