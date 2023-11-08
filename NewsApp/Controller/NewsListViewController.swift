@@ -10,6 +10,8 @@ import UIKit
 class NewsListViewController: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     private var news: NewsResponse?
     
     override func viewDidLoad() {
@@ -63,7 +65,10 @@ private extension NewsListViewController {
     }
     
     func fetchNews() {
-        NewsClient.requestNews(url: NewsClient.endPoints.news.url) { response, error in
+        activityIndicator.startAnimating()
+        NewsClient.requestNews(url: NewsClient.endPoints.news.url) { [weak self] response, error in
+            guard let self = self else { return }
+            self.activityIndicator.stopAnimating()
             self.news = response
             self.newsTableView.reloadData()
         }
