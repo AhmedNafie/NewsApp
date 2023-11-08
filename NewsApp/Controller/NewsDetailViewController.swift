@@ -20,7 +20,7 @@ class NewsDetailViewController: UIViewController {
         configureArticle()
     }
     
-    @IBAction func submitButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonTapped(_ sender: Any) {
         for rating in allowedRatings {
             if ratingTextField.text == rating  {
                 presentAlert(title: "Rating", message: "You have rated the article successfully")
