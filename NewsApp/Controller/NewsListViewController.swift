@@ -38,6 +38,14 @@ extension NewsListViewController: UITableViewDataSource {
     }
 }
 
+extension NewsListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let NewsDetailViewController = NewsDetailViewController()
+        navigationController?.pushViewController(NewsDetailViewController, animated: true)
+    }
+}
+
 private extension NewsListViewController {
     
     func fetchNews() {
