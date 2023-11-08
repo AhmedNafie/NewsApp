@@ -8,6 +8,8 @@
 import UIKit
 
 class NewsTableViewCell: UITableViewCell {
+    
+    static let cellHeight: CGFloat = 125
 
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var headlinesLabel: UILabel!

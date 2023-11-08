@@ -22,13 +22,11 @@ class NewsListViewController: UIViewController {
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news?.articles.count ?? 0
+        news?.articles.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
         cell.headlinesLabel.text = news?.articles[indexPath.row].title
         if let url = news?.articles[indexPath.row].urlToImage {
             let URL = URL(string: url)
@@ -46,19 +44,19 @@ extension NewsListViewController: UITableViewDataSource {
 extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
+        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
         NewsDetailViewController.article = news?.articles[indexPath.row]
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        NewsTableViewCell.cellHeight
     }
 }
 
 private extension NewsListViewController {
     func setupTableView() {
-        newsTableView.register(.init(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
+        newsTableView.register(cell: NewsTableViewCell.self)
         newsTableView.delegate = self
         newsTableView.dataSource = self
     }
