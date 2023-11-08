@@ -41,7 +41,7 @@ extension NewsListViewController: UITableViewDataSource {
 extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let NewsDetailViewController = NewsDetailViewController()
+        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
     }
 }
