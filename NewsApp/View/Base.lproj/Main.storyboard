@@ -84,18 +84,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3D-WO-1Ti">
-                                        <rect key="frame" x="156" y="787" width="102" height="31"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g3D-WO-1Ti">
+                                        <rect key="frame" x="99.5" y="787" width="215" height="31"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOz-ZT-eOK">
-                                                <rect key="frame" x="0.0" y="0.0" width="32" height="31"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Rating" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOz-ZT-eOK">
+                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="31"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <color key="textColor" systemColor="systemGreenColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N24-dz-ZvQ">
-                                                <rect key="frame" x="32" y="0.0" width="70" height="31"/>
+                                                <rect key="frame" x="107.5" y="0.0" width="107.5" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Submit"/>
                                                 <connections>
@@ -128,6 +128,7 @@
                         <outlet property="headlinesLabel" destination="fxe-nm-CYw" id="66L-ZF-6hi"/>
                         <outlet property="newsDetailTextView" destination="Xsj-Lh-emG" id="whr-8e-ApU"/>
                         <outlet property="newsImageView" destination="T5V-GA-Ish" id="gaI-p7-2ds"/>
+                        <outlet property="ratingTextField" destination="fOz-ZT-eOK" id="qn7-OJ-EPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f91-v3-KPZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

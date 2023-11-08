@@ -8,11 +8,12 @@
 import UIKit
 
 class NewsDetailViewController: UIViewController {
-    
+    let allowedRatings = ["1", "2", "3", "4", "5"]
     @IBOutlet weak var headlinesLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsDetailTextView: UITextView!
     
+    @IBOutlet weak var ratingTextField: UITextField!
     var article: Article?
     
     override func viewDidLoad() {
@@ -20,6 +21,14 @@ class NewsDetailViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        for rating in allowedRatings {
+            if ratingTextField.text == rating  {
+                presentAlert(title: "Rating", message: "You have rated the article successfully")
+            }
+            
+            presentAlert(title: "Rating", message: "Please choose a number from 1 to 5")
+        }
+        
     }
     
     func configureArticle() {
@@ -33,6 +42,13 @@ class NewsDetailViewController: UIViewController {
         
         headlinesLabel.text = article?.title
         newsDetailTextView.text = article?.content
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction.init(title: "Ok", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 }
 
