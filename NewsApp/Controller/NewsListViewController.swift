@@ -14,6 +14,7 @@ class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         fetchNews()
     }
 }
@@ -21,17 +22,19 @@ class NewsListViewController: UIViewController {
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news?.totalResults ?? 0
+        return news?.articles.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath)
-        cell.textLabel?.text = news?.articles[indexPath.row].title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.headlinesLabel.text = news?.articles[indexPath.row].title
         if let url = news?.articles[indexPath.row].urlToImage {
             let URL = URL(string: url)
             NewsClient.requestImageFile(url: URL!) { image, error in
                 DispatchQueue.main.async {
-                    cell.imageView?.image = image
+                    cell.newsImageView.image = image
                     cell.setNeedsLayout()
                 }
             }
@@ -47,9 +50,18 @@ extension NewsListViewController: UITableViewDelegate {
         NewsDetailViewController.article = news?.articles[indexPath.row]
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        150
+    }
 }
 
 private extension NewsListViewController {
+    func setupTableView() {
+        newsTableView.register(.init(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
+        newsTableView.delegate = self
+        newsTableView.dataSource = self
+    }
     
     func fetchNews() {
         NewsClient.requestNews(url: NewsClient.endPoints.news.url) { response, error in
