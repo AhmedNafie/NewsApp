@@ -13,6 +13,8 @@
 		45CB43EE2AFB97A500ABA00C /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43EC2AFB97A500ABA00C /* NewsTableViewCell.swift */; };
 		45CB43EF2AFB97A500ABA00C /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CB43ED2AFB97A500ABA00C /* NewsTableViewCell.xib */; };
 		45CB43F22AFBB67E00ABA00C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43F12AFBB67E00ABA00C /* Constants.swift */; };
+		45CB43F52AFBBC5C00ABA00C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43F42AFBBC5C00ABA00C /* UITableView+Extensions.swift */; };
+		45CB43F72AFBBC8400ABA00C /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43F62AFBBC8400ABA00C /* NSObject+Extension.swift */; };
 		45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63152AFA836800ACF1AA /* AppDelegate.swift */; };
 		45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63172AFA836800ACF1AA /* SceneDelegate.swift */; };
 		45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63192AFA836800ACF1AA /* NewsListViewController.swift */; };
@@ -50,6 +52,8 @@
 		45CB43EC2AFB97A500ABA00C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		45CB43ED2AFB97A500ABA00C /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		45CB43F12AFBB67E00ABA00C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		45CB43F42AFBBC5C00ABA00C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		45CB43F62AFBBC8400ABA00C /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		45DB63122AFA836800ACF1AA /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DB63152AFA836800ACF1AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45DB63172AFA836800ACF1AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +105,15 @@
 			path = NewsTableViewCell;
 			sourceTree = "<group>";
 		};
+		45CB43F32AFBBC4300ABA00C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45CB43F42AFBBC5C00ABA00C /* UITableView+Extensions.swift */,
+				45CB43F62AFBBC8400ABA00C /* NSObject+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		45DB63092AFA836700ACF1AA = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				45DB63532AFAC03B00ACF1AA /* Common */,
+				45CB43F32AFBBC4300ABA00C /* Extensions */,
 				45DB63572AFAC09D00ACF1AA /* Networking */,
 				45DB63562AFAC08D00ACF1AA /* Model */,
 				45DB63542AFAC05500ACF1AA /* View */,
@@ -329,10 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CB43F52AFBBC5C00ABA00C /* UITableView+Extensions.swift in Sources */,
 				45CB43E52AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */,
 				45CB43EE2AFB97A500ABA00C /* NewsTableViewCell.swift in Sources */,
 				45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */,
 				45DB634C2AFA994300ACF1AA /* NewsResponse.swift in Sources */,
+				45CB43F72AFBBC8400ABA00C /* NSObject+Extension.swift in Sources */,
 				45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */,
 				45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */,
 				45DB634A2AFA946F00ACF1AA /* NewsClient.swift in Sources */,
