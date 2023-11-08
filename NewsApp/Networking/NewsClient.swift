@@ -5,7 +5,7 @@
 //  Created by Ahmed Nafie on 07/11/2023.
 //
 
-import Foundation
+import UIKit
 
 class NewsClient {
     
@@ -30,6 +30,20 @@ class NewsClient {
             
             DispatchQueue.main.async {
                 completionHandler(newsData, nil)
+            }
+        }
+        task.resume()
+    }
+    
+    class func requestImageFile(url: URL, completionHandler: @escaping (UIImage?,Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                completionHandler(nil,error)
+                return
+            }
+            let imageData = UIImage(data: data)
+            DispatchQueue.main.async {
+                completionHandler(imageData,nil)
             }
         }
         task.resume()

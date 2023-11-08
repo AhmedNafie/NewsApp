@@ -27,6 +27,13 @@ extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath)
         cell.textLabel?.text = news?.articles[indexPath.row].title
+        if let url = news?.articles[indexPath.row].urlToImage {
+            let URL = URL(string: url)
+            NewsClient.requestImageFile(url: URL!) { image, error in
+                cell.imageView?.image = image
+                cell.setNeedsLayout()
+            }
+        }
         return cell
     }
 }
