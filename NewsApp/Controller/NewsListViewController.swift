@@ -29,16 +29,8 @@ extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.headlinesLabel.text = news?.articles[indexPath.row].title
-        if let url = news?.articles[indexPath.row].urlToImage {
-            let URL = URL(string: url)
-            NewsClient.requestImageFile(url: URL!) { image, error in
-                DispatchQueue.main.async {
-                    cell.newsImageView.image = image
-                    cell.setNeedsLayout()
-                }
-            }
-        }
+        cell.configure(title: news?.articles[indexPath.row].title,
+                       imagePath: news?.articles[indexPath.row].urlToImage)
         return cell
     }
 }
@@ -46,9 +38,7 @@ extension NewsListViewController: UITableViewDataSource {
 extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
-        NewsDetailViewController.article = news?.articles[indexPath.row]
-        navigationController?.pushViewController(NewsDetailViewController, animated: true)
+        goToNewsDetailVC(with: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,11 +55,18 @@ private extension NewsListViewController {
     
     func fetchNews() {
         activityIndicator.startAnimating()
-        NewsClient.requestNews(url: NewsClient.endPoints.news.url) { [weak self] response, error in
+        guard let url = NewsClient.endPoints.news.url else { return }
+        NewsClient.requestNews(url: url) { [weak self] response, error in
             guard let self = self else { return }
             self.activityIndicator.stopAnimating()
             self.news = response
             self.newsTableView.reloadData()
         }
+    }
+    
+    func goToNewsDetailVC(with item: Int) {
+        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
+        NewsDetailViewController.article = news?.articles[item]
+        navigationController?.pushViewController(NewsDetailViewController, animated: true)
     }
 }

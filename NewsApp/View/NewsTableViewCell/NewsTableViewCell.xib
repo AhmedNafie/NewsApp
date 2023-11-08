@@ -43,8 +43,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="headlinesLabel" destination="DGM-HL-2SN" id="DtW-CU-SLq"/>
                 <outlet property="newsImageView" destination="bGy-zh-RPA" id="A46-TA-Lc7"/>
+                <outlet property="titleLabel" destination="DGM-HL-2SN" id="DtW-CU-SLq"/>
             </connections>
             <point key="canvasLocation" x="206.52173913043481" y="114.17410714285714"/>
         </tableViewCell>

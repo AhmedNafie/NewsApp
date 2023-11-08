@@ -43,15 +43,8 @@ private extension NewsDetailViewController {
     func validateRating() {
         let allowedRatings = 1...5
         let rating = Int(ratingTextField.text ?? "0")
-        let message = allowedRatings.contains(rating ?? 0) ? Constants.Strings.ratingMessageSucessfull : Constants.Strings.ratingMessageFailed
-        presentAlert(title: Constants.Strings.ratingMessageTitle, message: message)
-    }
-    
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction.init(title: Constants.Strings.okText, style: .default)
-        alert.addAction(action)
-        present(alert, animated: true)
+        let message = allowedRatings.contains(rating ?? 0) ? Constants.Strings.ratingMessageSucessful : Constants.Strings.ratingMessageFailed
+        showAlert(with: message)
     }
 }
 

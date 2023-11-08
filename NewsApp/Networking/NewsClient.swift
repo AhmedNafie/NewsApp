@@ -12,8 +12,8 @@ class NewsClient {
     enum endPoints: String {
         case news = "https://newsapi.org/v2/top-headlines?country=us&apiKey=ab7aad6758e64293ab42ab229e21ac9f"
         
-        var url: URL {
-            return URL(string: self.rawValue)!
+        var url: URL? {
+            return URL(string: self.rawValue)
         }
     }
     
@@ -26,7 +26,7 @@ class NewsClient {
                 return
             }
             let decoder = JSONDecoder()
-            let newsData = try! decoder.decode(NewsResponse.self, from: data)
+            let newsData = try? decoder.decode(NewsResponse.self, from: data)
             
             DispatchQueue.main.async {
                 completionHandler(newsData, nil)
