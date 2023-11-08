@@ -14,4 +14,8 @@ enum Constants {
         static let ratingMessageFailed = "Please choose a number from 1 to 5"
         static let okText = "Ok"
     }
+    
+    enum Assets {
+        static let placeholder = "newsPlaceHolder"
+    }
 }

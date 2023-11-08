@@ -15,7 +15,6 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var headlinesLabel: UILabel!
     
     override func prepareForReuse() {
-        newsImageView.image = nil
-        newsImageView.image = UIImage(named: "newsPlaceHolder")
+        newsImageView.image = UIImage(named: Constants.Assets.placeholder)
     }
 }

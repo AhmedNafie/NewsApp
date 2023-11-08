@@ -28,11 +28,11 @@ class NewsDetailViewController: UIViewController {
 
 private extension NewsDetailViewController {
     func configureArticle() {
-        newsImageView.image = UIImage(named: "newsPlaceHolder")
         titleLabel.text = article?.title
         contentLabel.text = article?.description
         if let url = URL(string: article?.urlToImage ?? "") {
-            NewsClient.requestImageFile(url: url) { image, error in
+            NewsClient.requestImageFile(url: url) { [weak self] image, error in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     self.newsImageView.image = image
                 }
