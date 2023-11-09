@@ -35,15 +35,15 @@ class NewsClient {
         task.resume()
     }
     
-    class func requestImageFile(url: URL, completionHandler: @escaping (UIImage?,Error?) -> Void) {
+    class func requestImageFile(url: URL, completionHandler: @escaping (UIImage?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
-                completionHandler(nil,error)
+                completionHandler(nil, error)
                 return
             }
             let imageData = UIImage(data: data)
             DispatchQueue.main.async {
-                completionHandler(imageData,nil)
+                completionHandler(imageData, nil)
             }
         }
         task.resume()

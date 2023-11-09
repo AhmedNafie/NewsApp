@@ -18,14 +18,19 @@ class NewsTableViewCell: UITableViewCell {
         newsImageView.image = UIImage(named: Constants.Assets.placeholder)
     }
     
-    func configure(title: String?, imagePath: String?) {
-        titleLabel.text = title
-        guard let url = URL(string: imagePath ?? "") else { return }
-        NewsClient.requestImageFile(url: url) { [weak self] image, error in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.newsImageView.image = image
-                self.setNeedsLayout()
+    func configure(with article: Article) {
+        titleLabel.text = article.title
+        if let imagePath = article.urlToImage {
+            guard let url = URL(string: imagePath) else { return }
+            NewsClient.requestImageFile(url: url) { [weak self] image, error in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.newsImageView.image = image
+                }
+            }
+        } else {
+            if let imageData = article.imageData {
+                newsImageView.image = UIImage(data: imageData)
             }
         }
     }

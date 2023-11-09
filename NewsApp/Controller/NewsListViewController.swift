@@ -29,8 +29,7 @@ extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.configure(title: articles[indexPath.row].title,
-                       imagePath: articles[indexPath.row].urlToImage)
+        cell.configure(with: articles[indexPath.row])
         return cell
     }
 }
@@ -56,8 +55,10 @@ private extension NewsListViewController {
     func fetchArticles() {
         if Reachability.isConnectedToNetwork() {
             fetchFromNetwork()
+            title = Constants.Strings.onlineTitle
         } else {
             fetchFromStore()
+            title = Constants.Strings.offlineTitle
         }
     }
     

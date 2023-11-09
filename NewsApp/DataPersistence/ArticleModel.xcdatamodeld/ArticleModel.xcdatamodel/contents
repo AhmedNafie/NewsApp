@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G918" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ArticleDB" representedClassName="ArticleDB" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>

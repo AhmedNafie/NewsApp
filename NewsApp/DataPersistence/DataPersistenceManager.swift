@@ -15,7 +15,7 @@ class DataPersistenceManager {
     private init() {
         dataController.load()
     }
-        
+    
     private let dataController =  DataController(modelName: "ArticleModel")
     
     func loadFromDatabase() -> [Article]? {
@@ -24,7 +24,9 @@ class DataPersistenceManager {
             return result.map {
                 .init(title: $0.title,
                       description: $0.content,
-                      urlToImage: nil)
+                      urlToImage: nil,
+                      imageData: $0.imageData)
+                
             }
         }
         return nil
@@ -32,10 +34,16 @@ class DataPersistenceManager {
     
     func saveToDatabase(with articles: [Article]) {
         for article in articles {
-            let articleDB = ArticleDB(context: dataController.viewContext)
-            articleDB.title = article.title
-            articleDB.content = article.description
-            try? dataController.viewContext.save()
+            guard let url = URL(string: article.urlToImage ?? "") else { return }
+            NewsClient.requestImageFile(url: url) { [weak self] image, error in
+                guard let self = self else { return }
+                let articleDB = ArticleDB(context: self.dataController.viewContext)
+                articleDB.title = article.title
+                articleDB.content = article.description
+                articleDB.imageData = image?.jpegData(compressionQuality: 1)
+                try? self.dataController.viewContext.save()
+            }
+            
         }
     }
 }
