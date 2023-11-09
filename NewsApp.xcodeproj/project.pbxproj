@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */; };
+		456C4E722AFCD52F00C883B4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E712AFCD52F00C883B4 /* DataController.swift */; };
 		45CB43E52AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E62AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E72AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		456C4E6F2AFCCEE000C883B4 /* ArticleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArticleModel.xcdatamodel; sourceTree = "<group>"; };
+		456C4E712AFCD52F00C883B4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		45CB43EC2AFB97A500ABA00C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		45CB43ED2AFB97A500ABA00C /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				45DB634B2AFA994300ACF1AA /* NewsResponse.swift */,
+				456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */,
+				456C4E712AFCD52F00C883B4 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,10 +366,12 @@
 				45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */,
 				45DB634C2AFA994300ACF1AA /* NewsResponse.swift in Sources */,
 				45CB43F72AFBBC8400ABA00C /* NSObject+Extension.swift in Sources */,
+				456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */,
 				45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */,
 				45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */,
 				45DB634A2AFA946F00ACF1AA /* NewsClient.swift in Sources */,
 				45CB43F22AFBB67E00ABA00C /* Constants.swift in Sources */,
+				456C4E722AFCD52F00C883B4 /* DataController.swift in Sources */,
 				45CB44012AFBE8F100ABA00C /* UIViewController+showAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -731,6 +739,19 @@
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				456C4E6F2AFCCEE000C883B4 /* ArticleModel.xcdatamodel */,
+			);
+			currentVersion = 456C4E6F2AFCCEE000C883B4 /* ArticleModel.xcdatamodel */;
+			path = ArticleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 45DB630A2AFA836700ACF1AA /* Project object */;
 }

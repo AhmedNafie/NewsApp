@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewsListViewController: UIViewController {
     
@@ -13,11 +14,14 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var news: NewsResponse?
+    var offlineAritcles: [Articles] = []
+    var dataController: DataController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         fetchNews()
+        fetchStore()
     }
 }
 
@@ -31,6 +35,7 @@ extension NewsListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
         cell.configure(title: news?.articles[indexPath.row].title,
                        imagePath: news?.articles[indexPath.row].urlToImage)
+        saveToStore(with: indexPath.row)
         return cell
     }
 }
@@ -72,5 +77,22 @@ private extension NewsListViewController {
         let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
         NewsDetailViewController.article = news?.articles[item]
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
+    }
+    
+    func saveToStore(with item: Int) {
+        let Articles = Articles(context: dataController.viewContext)
+        Articles.articleTitle = news?.articles[item].title
+        Articles.articleDescription = news?.articles[item].description
+        try? dataController.viewContext.save()
+        //        print(Articles.articleTitle)
+    }
+    
+    func fetchStore() {
+        let fetchRequest: NSFetchRequest<Articles> = Articles.fetchRequest()
+        if let result = try? self.dataController.viewContext.fetch(fetchRequest) {
+            offlineAritcles = result
+            print(offlineAritcles[1].articleTitle)
+            newsTableView.reloadData()
+        }
     }
 }
