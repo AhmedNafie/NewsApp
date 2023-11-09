@@ -13,34 +13,26 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var news: NewsResponse?
-    var offlineAritcles: [Articles] = []
+    private var articles: [Article] = []
     var dataController: DataController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        fetchNews()
-        fetchStore()
+        fetchArticles()
     }
 }
 
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        news?.articles.count ?? offlineAritcles.count
+        articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        if Reachability.isConnectedToNetwork() {
-            cell.configure(title: news?.articles[indexPath.row].title,
-                           imagePath: news?.articles[indexPath.row].urlToImage)
-            saveToStore(with: indexPath.row)
-            return cell
-        }
-        cell.configure(title: offlineAritcles[indexPath.row].articleTitle,
-                       imagePath: "")
+        cell.configure(title: articles[indexPath.row].title,
+                       imagePath: articles[indexPath.row].urlToImage)
         return cell
     }
 }
@@ -63,41 +55,56 @@ private extension NewsListViewController {
         newsTableView.dataSource = self
     }
     
-    func fetchNews() {
+    func fetchArticles() {
+        if Reachability.isConnectedToNetwork() {
+            fetchFromNetwork()
+        } else {
+            fetchFromStore()
+        }
+    }
+    
+    func fetchFromNetwork() {
         activityIndicator.startAnimating()
         guard let url = NewsClient.endPoints.news.url else { return }
         NewsClient.requestNews(url: url) { [weak self] response, error in
             guard let self = self else { return }
+            self.activityIndicator.stopAnimating()
             if let error = error {
                 self.showAlert(with: error.localizedDescription)
                 return
             }
-            self.activityIndicator.stopAnimating()
-            self.news = response
-            self.newsTableView.reloadData()
+            if let articles = response?.articles {
+                self.articles = articles
+                self.saveToStore(with: articles)
+                self.newsTableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchFromStore() {
+        let fetchRequest: NSFetchRequest<Articles> = Articles.fetchRequest()
+        if let result = try? self.dataController.viewContext.fetch(fetchRequest) {
+            articles = result.map {
+                .init(title: $0.articleTitle,
+                      description: $0.articleDescription,
+                      urlToImage: nil)
+            }
+            newsTableView.reloadData()
+        }
+    }
+    
+    func saveToStore(with articles: [Article]) {
+        for article in articles {
+            let Articles = Articles(context: dataController.viewContext)
+            Articles.articleTitle = article.title
+            Articles.articleDescription = article.description
+            try? dataController.viewContext.save()
         }
     }
     
     func goToNewsDetailVC(with item: Int) {
         let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
-        NewsDetailViewController.article = news?.articles[item]
+        NewsDetailViewController.article = articles[item]
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
-    }
-    
-    func saveToStore(with item: Int) {
-        let Articles = Articles(context: dataController.viewContext)
-        Articles.articleTitle = news?.articles[item].title
-        Articles.articleDescription = news?.articles[item].description
-        try? dataController.viewContext.save()
-        //        print(Articles.articleTitle)
-    }
-    
-    func fetchStore() {
-        let fetchRequest: NSFetchRequest<Articles> = Articles.fetchRequest()
-        if let result = try? self.dataController.viewContext.fetch(fetchRequest) {
-            offlineAritcles = result
-            print(offlineAritcles[1].articleTitle)
-            newsTableView.reloadData()
-        }
     }
 }
