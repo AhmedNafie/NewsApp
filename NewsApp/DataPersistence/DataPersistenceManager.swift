@@ -12,12 +12,14 @@ class DataPersistenceManager {
     // MARK: - Singleton
     static let shared = DataPersistenceManager()
     
+    // MARK: - Properties
+    private let dataController =  DataController(modelName: "ArticleModel")
+
     private init() {
         dataController.load()
     }
     
-    private let dataController =  DataController(modelName: "ArticleModel")
-    
+    // MARK: - Methods
     func loadFromDatabase() -> [Article]? {
         let fetchRequest: NSFetchRequest<ArticleDB> = ArticleDB.fetchRequest()
         if let result = try? self.dataController.viewContext.fetch(fetchRequest) {
@@ -26,7 +28,6 @@ class DataPersistenceManager {
                       description: $0.content,
                       urlToImage: nil,
                       imageData: $0.imageData)
-                
             }
         }
         return nil
@@ -43,7 +44,6 @@ class DataPersistenceManager {
                 articleDB.imageData = image?.jpegData(compressionQuality: 1)
                 try? self.dataController.viewContext.save()
             }
-            
         }
     }
 }

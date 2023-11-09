@@ -8,24 +8,29 @@
 import UIKit
 
 class NewsDetailViewController: UIViewController {
-    
+   
+    // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var ratingTextField: UITextField!
     
+    // MARK: - Properties
     var article: Article?
-    
+   
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureArticle()
     }
     
+    // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         validateRating()
     }
 }
 
+// MARK: Private methods
 private extension NewsDetailViewController {
     func configureArticle() {
         titleLabel.text = article?.title
@@ -52,4 +57,3 @@ private extension NewsDetailViewController {
         showAlert(with: message)
     }
 }
-

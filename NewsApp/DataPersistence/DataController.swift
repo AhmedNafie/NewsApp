@@ -5,12 +5,10 @@
 //  Created by Ahmed Nafie on 09/11/2023.
 //
 
-import Foundation
 import CoreData
-import UIKit
 
 class DataController {
-    
+    // MARK: - Properties
     let persistenceContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
         return persistenceContainer.viewContext
@@ -20,6 +18,7 @@ class DataController {
         persistenceContainer = NSPersistentContainer(name: modelName)
     }
     
+    // MARK: - Methods
     func load() {
         persistenceContainer.loadPersistentStores { _, error in
             guard error == nil else {

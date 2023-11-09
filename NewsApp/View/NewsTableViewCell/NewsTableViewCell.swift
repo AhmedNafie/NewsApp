@@ -9,11 +9,14 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
     
-    static let cellHeight: CGFloat = 125
-
+    // MARK: - Outlets
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+        
+    // MARK: - Properties
+    static let cellHeight: CGFloat = 125
+
+    // MARK: - Methods
     override func prepareForReuse() {
         newsImageView.image = UIImage(named: Constants.Assets.placeholder)
     }

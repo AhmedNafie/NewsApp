@@ -9,11 +9,14 @@ import UIKit
 
 class NewsListViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - Properties
     private var articles: [Article] = []
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -21,6 +24,7 @@ class NewsListViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDataSource
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +38,7 @@ extension NewsListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
 extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,6 +50,7 @@ extension NewsListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: Private methods
 private extension NewsListViewController {
     func setupTableView() {
         newsTableView.register(cell: NewsTableViewCell.self)

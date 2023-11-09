@@ -17,6 +17,7 @@ class NewsClient {
         }
     }
     
+    // MARK: - Methods
     class func requestNews(url: URL, completionHandler: @escaping (NewsResponse?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {

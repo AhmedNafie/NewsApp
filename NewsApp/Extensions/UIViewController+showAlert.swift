@@ -1,8 +1,8 @@
 //
 //  UIViewController+showAlert.swift
-//  AuthenticationApp
+//  NewsApp
 //
-//  Created by Ahmed Nafie on 26/04/2022.
+//  Created by Ahmed Nafie on 08/11/2023.
 //
 
 import UIKit
