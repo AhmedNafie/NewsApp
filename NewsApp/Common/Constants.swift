@@ -12,6 +12,7 @@ enum Constants {
         static let ratingMessageSucessful = "You have rated the article successfully"
         static let ratingMessageFailed = "Please choose a number from 1 to 5"
         static let okText = "Ok"
+        static let databaseFailure = "There is no cache in the database"
     }
     
     enum Assets {

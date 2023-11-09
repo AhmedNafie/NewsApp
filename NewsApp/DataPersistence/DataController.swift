@@ -20,12 +20,11 @@ class DataController {
         persistenceContainer = NSPersistentContainer(name: modelName)
     }
     
-    func load(_ completion: (() -> Void)? = nil) {
-        persistenceContainer.loadPersistentStores {StoreDescription, error in
+    func load() {
+        persistenceContainer.loadPersistentStores { _, error in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }
-            completion?()
         }
     }
 }

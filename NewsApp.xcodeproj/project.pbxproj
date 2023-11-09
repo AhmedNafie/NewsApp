@@ -10,6 +10,7 @@
 		456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */; };
 		456C4E722AFCD52F00C883B4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E712AFCD52F00C883B4 /* DataController.swift */; };
 		456C4E782AFCF9CE00C883B4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E772AFCF9CE00C883B4 /* Reachability.swift */; };
+		456C4E7B2AFD082C00C883B4 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E7A2AFD082C00C883B4 /* DataPersistenceManager.swift */; };
 		45CB43E52AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E62AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E72AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
@@ -56,6 +57,7 @@
 		456C4E6F2AFCCEE000C883B4 /* ArticleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArticleModel.xcdatamodel; sourceTree = "<group>"; };
 		456C4E712AFCD52F00C883B4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		456C4E772AFCF9CE00C883B4 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		456C4E7A2AFD082C00C883B4 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		45CB43EC2AFB97A500ABA00C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		45CB43ED2AFB97A500ABA00C /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -106,6 +108,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		456C4E792AFD035200C883B4 /* DataPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */,
+				456C4E712AFCD52F00C883B4 /* DataController.swift */,
+				456C4E7A2AFD082C00C883B4 /* DataPersistenceManager.swift */,
+			);
+			path = DataPersistence;
+			sourceTree = "<group>";
+		};
 		45CB43F02AFB97B800ABA00C /* NewsTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +163,7 @@
 				45DB63532AFAC03B00ACF1AA /* Common */,
 				45CB43F32AFBBC4300ABA00C /* Extensions */,
 				45DB63572AFAC09D00ACF1AA /* Networking */,
+				456C4E792AFD035200C883B4 /* DataPersistence */,
 				45DB63562AFAC08D00ACF1AA /* Model */,
 				45DB63542AFAC05500ACF1AA /* View */,
 				45DB63552AFAC07C00ACF1AA /* Controller */,
@@ -210,8 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				45DB634B2AFA994300ACF1AA /* NewsResponse.swift */,
-				456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */,
-				456C4E712AFCD52F00C883B4 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				45CB43F72AFBBC8400ABA00C /* NSObject+Extension.swift in Sources */,
 				456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */,
 				45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */,
+				456C4E7B2AFD082C00C883B4 /* DataPersistenceManager.swift in Sources */,
 				45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */,
 				45DB634A2AFA946F00ACF1AA /* NewsClient.swift in Sources */,
 				45CB43F22AFBB67E00ABA00C /* Constants.swift in Sources */,

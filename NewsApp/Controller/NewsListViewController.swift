@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class NewsListViewController: UIViewController {
     
@@ -14,7 +13,6 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var articles: [Article] = []
-    var dataController: DataController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,30 +73,19 @@ private extension NewsListViewController {
             }
             if let articles = response?.articles {
                 self.articles = articles
-                self.saveToStore(with: articles)
+                DataPersistenceManager.shared.saveToDatabase(with: articles)
                 self.newsTableView.reloadData()
             }
         }
     }
     
-    func fetchFromStore() {
-        let fetchRequest: NSFetchRequest<Articles> = Articles.fetchRequest()
-        if let result = try? self.dataController.viewContext.fetch(fetchRequest) {
-            articles = result.map {
-                .init(title: $0.articleTitle,
-                      description: $0.articleDescription,
-                      urlToImage: nil)
-            }
-            newsTableView.reloadData()
-        }
-    }
     
-    func saveToStore(with articles: [Article]) {
-        for article in articles {
-            let Articles = Articles(context: dataController.viewContext)
-            Articles.articleTitle = article.title
-            Articles.articleDescription = article.description
-            try? dataController.viewContext.save()
+    func fetchFromStore() {
+        if let articles = DataPersistenceManager.shared.loadFromDatabase(), !articles.isEmpty {
+            self.articles = articles
+            newsTableView.reloadData()
+        } else {
+            showAlert(with: Constants.Strings.databaseFailure)
         }
     }
     
