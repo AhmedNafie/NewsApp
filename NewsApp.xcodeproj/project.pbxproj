@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E6E2AFCCEE000C883B4 /* ArticleModel.xcdatamodeld */; };
 		456C4E722AFCD52F00C883B4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E712AFCD52F00C883B4 /* DataController.swift */; };
+		456C4E782AFCF9CE00C883B4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C4E772AFCF9CE00C883B4 /* Reachability.swift */; };
 		45CB43E52AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E62AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
 		45CB43E72AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		456C4E6F2AFCCEE000C883B4 /* ArticleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArticleModel.xcdatamodel; sourceTree = "<group>"; };
 		456C4E712AFCD52F00C883B4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		456C4E772AFCF9CE00C883B4 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		45CB43EC2AFB97A500ABA00C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		45CB43ED2AFB97A500ABA00C /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		45DB63572AFAC09D00ACF1AA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				456C4E772AFCF9CE00C883B4 /* Reachability.swift */,
 				45DB63492AFA946F00ACF1AA /* NewsClient.swift */,
 			);
 			path = Networking;
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456C4E782AFCF9CE00C883B4 /* Reachability.swift in Sources */,
 				45CB43F52AFBBC5C00ABA00C /* UITableView+Extensions.swift in Sources */,
 				45CB43E52AFB679E00ABA00C /* NewsDetailViewController.swift in Sources */,
 				45CB43EE2AFB97A500ABA00C /* NewsTableViewCell.swift in Sources */,

@@ -28,14 +28,19 @@ class NewsListViewController: UIViewController {
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        news?.articles.count ?? 0
+        news?.articles.count ?? offlineAritcles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.configure(title: news?.articles[indexPath.row].title,
-                       imagePath: news?.articles[indexPath.row].urlToImage)
-        saveToStore(with: indexPath.row)
+        if Reachability.isConnectedToNetwork() {
+            cell.configure(title: news?.articles[indexPath.row].title,
+                           imagePath: news?.articles[indexPath.row].urlToImage)
+            saveToStore(with: indexPath.row)
+            return cell
+        }
+        cell.configure(title: offlineAritcles[indexPath.row].articleTitle,
+                       imagePath: "")
         return cell
     }
 }
