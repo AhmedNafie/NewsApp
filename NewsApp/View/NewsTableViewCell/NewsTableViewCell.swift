@@ -23,17 +23,18 @@ class NewsTableViewCell: UITableViewCell {
     
     func configure(with article: Article) {
         titleLabel.text = article.title
-        if let imagePath = article.urlToImage {
-            guard let url = URL(string: imagePath) else { return }
-            NewsClient.requestImageFile(url: url) { [weak self] image, error in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.newsImageView.image = image
-                }
-            }
+        if let image = DataPersistenceManager.shared.imagesCache[article.title ?? ""] {
+            newsImageView.image = image
         } else {
-            if let imageData = article.imageData {
-                newsImageView.image = UIImage(data: imageData)
+            if let imagePath = article.urlToImage {
+                guard let url = URL(string: imagePath) else { return }
+                NewsClient.requestImageFile(url: url) { [weak self] image, error in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        self.newsImageView.image = image
+                    }
+                    DataPersistenceManager.shared.imagesCache[article.title ?? ""] = image
+                }
             }
         }
     }

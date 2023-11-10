@@ -35,17 +35,19 @@ private extension NewsDetailViewController {
     func configureArticle() {
         titleLabel.text = article?.title
         contentLabel.text = article?.description
-        if let imagePath = article?.urlToImage {
-            guard let url = URL(string: imagePath) else { return }
-            NewsClient.requestImageFile(url: url) { [weak self] image, error in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.newsImageView.image = image
-                }
-            }
+        
+        if let image = DataPersistenceManager.shared.imagesCache[article?.title ?? ""] {
+            newsImageView.image = image
         } else {
-            if let imageData = article?.imageData {
-                newsImageView.image = UIImage(data: imageData)
+            if let imagePath = article?.urlToImage {
+                guard let url = URL(string: imagePath) else { return }
+                NewsClient.requestImageFile(url: url) { [weak self] image, error in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        self.newsImageView.image = image
+                    }
+                    DataPersistenceManager.shared.imagesCache[self.article?.title ?? ""] = image
+                }
             }
         }
     }

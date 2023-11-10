@@ -43,9 +43,7 @@ class NewsClient {
                 return
             }
             let imageData = UIImage(data: data)
-            DispatchQueue.main.async {
-                completionHandler(imageData, nil)
-            }
+            completionHandler(imageData, nil)
         }
         task.resume()
     }
