@@ -14,13 +14,15 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-    private var articles: [Article] = []
+     var articles: [Article] = []
+    var presenter: NewsPresenter!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = NewsPresenter(view: self)
         setupTableView()
-        fetchArticles()
+        presenter.fetchArticles()
     }
 }
 
@@ -56,44 +58,6 @@ private extension NewsListViewController {
         newsTableView.register(cell: NewsTableViewCell.self)
         newsTableView.delegate = self
         newsTableView.dataSource = self
-    }
-    
-    func fetchArticles() {
-        if Reachability.isConnectedToNetwork() {
-            fetchFromNetwork()
-            title = Constants.Strings.onlineTitle
-        } else {
-            fetchFromStore()
-            title = Constants.Strings.offlineTitle
-        }
-    }
-    
-    func fetchFromNetwork() {
-        activityIndicator.startAnimating()
-        guard let url = NewsClient.endPoints.news.url else { return }
-        NewsClient.requestNews(url: url) { [weak self] response, error in
-            guard let self = self else { return }
-            self.activityIndicator.stopAnimating()
-            if let error = error {
-                self.showAlert(with: error.localizedDescription)
-                return
-            }
-            if let articles = response?.articles {
-                self.articles = articles
-                DataPersistenceManager.shared.saveToDatabase(with: articles)
-                self.newsTableView.reloadData()
-            }
-        }
-    }
-    
-    
-    func fetchFromStore() {
-        if let articles = DataPersistenceManager.shared.loadFromDatabase(), !articles.isEmpty {
-            self.articles = articles
-            newsTableView.reloadData()
-        } else {
-            showAlert(with: Constants.Strings.databaseFailure)
-        }
     }
     
     func goToNewsDetailVC(with item: Int) {
