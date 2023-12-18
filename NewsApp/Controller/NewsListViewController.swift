@@ -6,8 +6,10 @@
 //
 
 import UIKit
-
-class NewsListViewController: UIViewController {
+protocol NewsList {
+    
+}
+class NewsListViewController: UIViewController, NewsList {
     
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
