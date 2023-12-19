@@ -7,7 +7,11 @@
 
 import Foundation
 
-class NewsPresenter {
+protocol newsPresentation {
+   func fetchArticles()
+}
+
+class NewsPresenter: newsPresentation {
     var view: NewsList!
     
     init(view: NewsList) {

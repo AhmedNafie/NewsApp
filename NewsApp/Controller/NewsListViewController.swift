@@ -39,7 +39,7 @@ class NewsListViewController: UIViewController, NewsList {
     
     // MARK: - Properties
     var articles: [Article] = []
-    var presenter: NewsPresenter!
+    var presenter: newsPresentation!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
