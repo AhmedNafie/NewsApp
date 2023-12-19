@@ -12,6 +12,8 @@ protocol NewsList {
     func stopAnimating()
     func showAlert(with message: String)
     func updateUI()
+    var articles: [Article] { get set }
+
 }
 
 class NewsListViewController: UIViewController, NewsList {
