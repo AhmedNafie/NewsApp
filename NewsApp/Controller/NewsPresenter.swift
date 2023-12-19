@@ -10,7 +10,7 @@ import Foundation
 class NewsPresenter {
     var view: NewsList!
     
-    init(view: NewsListViewController) {
+    init(view: NewsList) {
         self.view = view
     }
     
