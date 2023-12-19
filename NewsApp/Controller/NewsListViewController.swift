@@ -7,16 +7,36 @@
 
 import UIKit
 protocol NewsList {
-    
+    func setTitle(_title: String)
+    func startAnimating()
+    func stopAnimating()
+    func showAlert(with message: String)
+    func updateUI()
 }
+
 class NewsListViewController: UIViewController, NewsList {
+    func updateUI() {
+        newsTableView.reloadData()
+    }
+    
+    func setTitle(_title: String) {
+        title = _title
+    }
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
+    }
+    
     
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-     var articles: [Article] = []
+    var articles: [Article] = []
     var presenter: NewsPresenter!
     
     // MARK: - Lifecycle Methods

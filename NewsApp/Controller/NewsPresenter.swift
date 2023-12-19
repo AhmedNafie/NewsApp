@@ -8,7 +8,7 @@
 import Foundation
 
 class NewsPresenter {
-    var view: NewsListViewController!
+    var view: NewsList!
     
     init(view: NewsListViewController) {
         self.view = view
@@ -17,19 +17,19 @@ class NewsPresenter {
     func fetchArticles() {
         if Reachability.isConnectedToNetwork() {
             fetchFromNetwork()
-            view.title = Constants.Strings.onlineTitle
+            view.setTitle(_title: Constants.Strings.onlineTitle)
         } else {
             fetchFromStore()
-            view.title = Constants.Strings.offlineTitle
+            view.setTitle(_title: Constants.Strings.offlineTitle)
         }
     }
     
     func fetchFromNetwork() {
-        view.activityIndicator.startAnimating()
+        view.startAnimating()
         guard let url = NewsClient.endPoints.news.url else { return }
         NewsClient.requestNews(url: url) { [weak self] response, error in
             guard let self = self else { return }
-            self.view.activityIndicator.stopAnimating()
+            self.view.stopAnimating()
             if let error = error {
                 self.view.showAlert(with: error.localizedDescription)
                 return
@@ -37,7 +37,7 @@ class NewsPresenter {
             if let articles = response?.articles {
                 self.view.articles = articles
                 DataPersistenceManager.shared.saveToDatabase(with: articles)
-                self.view.newsTableView.reloadData()
+                self.view.updateUI()
             }
         }
     }
@@ -45,7 +45,7 @@ class NewsPresenter {
     func fetchFromStore() {
         if let articles = DataPersistenceManager.shared.loadFromDatabase(), !articles.isEmpty {
             view.articles = articles
-            view.newsTableView.reloadData()
+            view.updateUI()
         } else {
             view.showAlert(with: Constants.Strings.databaseFailure)
         }
