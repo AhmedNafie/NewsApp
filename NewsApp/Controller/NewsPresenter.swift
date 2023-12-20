@@ -55,6 +55,7 @@ class NewsPresenter: newsPresentation {
     
     func fetchFromStore() {
         if let articles = DataPersistenceManager.shared.loadFromDatabase(), !articles.isEmpty {
+            self.articles = articles
             view.updateUI()
         } else {
             view.showAlert(with: Constants.Strings.databaseFailure)
