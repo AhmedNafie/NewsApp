@@ -206,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				45CB43F02AFB97B800ABA00C /* NewsTableViewCell */,
+				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
 				45DB631B2AFA836800ACF1AA /* Main.storyboard */,
 				45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */,
 			);
@@ -215,7 +216,6 @@
 		45DB63552AFAC07C00ACF1AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
 				45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */,
 				45D0E45E2B30A43500F0DBF1 /* NewsPresenter.swift */,
 			);

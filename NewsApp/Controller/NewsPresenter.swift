@@ -8,11 +8,14 @@
 import Foundation
 
 protocol newsPresentation {
-   func fetchArticles()
+    var articles: [Article] { set get}
+    func fetchArticles()
+    func returnCount() -> Int
 }
 
 class NewsPresenter: newsPresentation {
     var view: NewsList!
+    var articles: [Article] = []
     
     init(view: NewsList) {
         self.view = view
@@ -28,6 +31,10 @@ class NewsPresenter: newsPresentation {
         }
     }
     
+    func returnCount() -> Int {
+        articles.count
+    }
+    
     func fetchFromNetwork() {
         view.startAnimating()
         guard let url = NewsClient.endPoints.news.url else { return }
@@ -39,7 +46,7 @@ class NewsPresenter: newsPresentation {
                 return
             }
             if let articles = response?.articles {
-                self.view.articles = articles
+                self.articles = articles
                 DataPersistenceManager.shared.saveToDatabase(with: articles)
                 self.view.updateUI()
             }
@@ -48,7 +55,6 @@ class NewsPresenter: newsPresentation {
     
     func fetchFromStore() {
         if let articles = DataPersistenceManager.shared.loadFromDatabase(), !articles.isEmpty {
-            view.articles = articles
             view.updateUI()
         } else {
             view.showAlert(with: Constants.Strings.databaseFailure)

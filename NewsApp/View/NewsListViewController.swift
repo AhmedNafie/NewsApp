@@ -12,8 +12,6 @@ protocol NewsList {
     func stopAnimating()
     func showAlert(with message: String)
     func updateUI()
-    var articles: [Article] { get set }
-
 }
 
 class NewsListViewController: UIViewController, NewsList {
@@ -38,7 +36,6 @@ class NewsListViewController: UIViewController, NewsList {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-    var articles: [Article] = []
     var presenter: newsPresentation!
     
     // MARK: - Lifecycle Methods
@@ -54,12 +51,12 @@ class NewsListViewController: UIViewController, NewsList {
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        articles.count
+        presenter.returnCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.configure(with: articles[indexPath.row])
+        cell.configure(with: presenter.articles[indexPath.row])
         return cell
     }
 }
@@ -86,7 +83,7 @@ private extension NewsListViewController {
     
     func goToNewsDetailVC(with item: Int) {
         let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
-        NewsDetailViewController.article = articles[item]
+        NewsDetailViewController.article = presenter.articles[item]
         navigationController?.pushViewController(NewsDetailViewController, animated: true)
     }
 }
