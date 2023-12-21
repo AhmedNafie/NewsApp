@@ -56,6 +56,6 @@ private extension NewsDetailViewController {
         let allowedRatings = 1...5
         let rating = Int(ratingTextField.text ?? "0")
         let message = allowedRatings.contains(rating ?? 0) ? Constants.Strings.ratingMessageSucessful : Constants.Strings.ratingMessageFailed
-        showAlert(with: message)
+        presentError(with: message)
     }
 }

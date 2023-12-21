@@ -7,42 +7,42 @@
 
 import Foundation
 
-protocol newsPresentation {
-    var articles: [Article] { set get}
-    func fetchArticles()
-    func returnCount() -> Int
+protocol newsPresenting {
+    var articles: [Article] { get }
+    func viewDidLoad()
+    func numberOfRows() -> Int
 }
 
-class NewsPresenter: newsPresentation {
-    var view: NewsList!
+class NewsPresenter: newsPresenting {
+    var view: NewsListView!
     var articles: [Article] = []
     
-    init(view: NewsList) {
+    init(view: NewsListView) {
         self.view = view
     }
     
-    func fetchArticles() {
+    func viewDidLoad() {
         if Reachability.isConnectedToNetwork() {
             fetchFromNetwork()
-            view.setTitle(_title: Constants.Strings.onlineTitle)
+            view.setTitle(Constants.Strings.onlineTitle)
         } else {
             fetchFromStore()
-            view.setTitle(_title: Constants.Strings.offlineTitle)
+            view.setTitle(Constants.Strings.offlineTitle)
         }
     }
     
-    func returnCount() -> Int {
+    func numberOfRows() -> Int {
         articles.count
     }
     
     func fetchFromNetwork() {
-        view.startAnimating()
+        view.startLoading()
         guard let url = NewsClient.endPoints.news.url else { return }
         NewsClient.requestNews(url: url) { [weak self] response, error in
             guard let self = self else { return }
-            self.view.stopAnimating()
+            self.view.stopLoading()
             if let error = error {
-                self.view.showAlert(with: error.localizedDescription)
+                self.view.presentError(with: error.localizedDescription)
                 return
             }
             if let articles = response?.articles {
@@ -58,7 +58,7 @@ class NewsPresenter: newsPresentation {
             self.articles = articles
             view.updateUI()
         } else {
-            view.showAlert(with: Constants.Strings.databaseFailure)
+            view.presentError(with: Constants.Strings.databaseFailure)
         }
     }
 }

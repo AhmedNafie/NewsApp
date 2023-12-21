@@ -6,52 +6,57 @@
 //
 
 import UIKit
-protocol NewsList {
-    func setTitle(_title: String)
-    func startAnimating()
-    func stopAnimating()
-    func showAlert(with message: String)
+protocol NewsListView {
+    func setTitle(_ title: String)
+    func startLoading()
+    func stopLoading()
+    func presentError(with message: String)
     func updateUI()
 }
 
-class NewsListViewController: UIViewController, NewsList {
-    func updateUI() {
-        newsTableView.reloadData()
-    }
-    
-    func setTitle(_title: String) {
-        title = _title
-    }
-    func startAnimating() {
-        activityIndicator.startAnimating()
-    }
-    
-    func stopAnimating() {
-        activityIndicator.stopAnimating()
-    }
-    
-    
+class NewsListViewController: UIViewController {
+
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-    var presenter: newsPresentation!
+    var presenter: newsPresenting!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = NewsPresenter(view: self)
         setupTableView()
-        presenter.fetchArticles()
+        presenter.viewDidLoad()
     }
+}
+// MARK: NewsListView
+extension NewsListViewController: NewsListView {
+    
+    func setTitle(_ title: String) {
+        self.title = title
+    }
+    func startLoading() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        activityIndicator.stopAnimating()
+    }
+    
+    func updateUI() {
+        newsTableView.reloadData()
+    }
+    
+    
 }
 
 // MARK: UITableViewDataSource
 extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.returnCount()
+        presenter.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
