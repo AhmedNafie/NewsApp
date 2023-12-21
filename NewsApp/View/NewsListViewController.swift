@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 protocol NewsListView {
     func setTitle(_ title: String)
     func startLoading()
@@ -21,7 +22,7 @@ class NewsListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-    var presenter: newsPresenting!
+    private var presenter: NewsPresenting!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.configure(with: presenter.articles[indexPath.row])
+        cell.configure(with: presenter.cellForRowAt(indexPathRow: indexPath.row))
         return cell
     }
 }

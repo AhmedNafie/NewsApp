@@ -7,34 +7,21 @@
 
 import Foundation
 
-protocol newsPresenting {
+protocol NewsPresenting {
     var articles: [Article] { get }
     func viewDidLoad()
     func numberOfRows() -> Int
+    func cellForRowAt(indexPathRow: Int) -> Article
 }
 
-class NewsPresenter: newsPresenting {
-    var view: NewsListView!
+class NewsPresenter {
+    private var view: NewsListView!
     var articles: [Article] = []
     
     init(view: NewsListView) {
         self.view = view
     }
-    
-    func viewDidLoad() {
-        if Reachability.isConnectedToNetwork() {
-            fetchFromNetwork()
-            view.setTitle(Constants.Strings.onlineTitle)
-        } else {
-            fetchFromStore()
-            view.setTitle(Constants.Strings.offlineTitle)
-        }
-    }
-    
-    func numberOfRows() -> Int {
-        articles.count
-    }
-    
+
     func fetchFromNetwork() {
         view.startLoading()
         guard let url = NewsClient.endPoints.news.url else { return }
@@ -60,5 +47,27 @@ class NewsPresenter: newsPresenting {
         } else {
             view.presentError(with: Constants.Strings.databaseFailure)
         }
+    }
+}
+
+// MARK: NewsPresenting methods
+extension NewsPresenter: NewsPresenting {
+    
+    func numberOfRows() -> Int {
+        articles.count
+    }
+    
+    func viewDidLoad() {
+        if Reachability.isConnectedToNetwork() {
+            fetchFromNetwork()
+            view.setTitle(Constants.Strings.onlineTitle)
+        } else {
+            fetchFromStore()
+            view.setTitle(Constants.Strings.offlineTitle)
+        }
+    }
+    
+    func cellForRowAt(indexPathRow: Int) -> Article {
+        articles[indexPathRow]
     }
 }
