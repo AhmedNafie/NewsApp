@@ -50,7 +50,6 @@ extension NewsListViewController: NewsListView {
         newsTableView.reloadData()
     }
     
-    
 }
 
 // MARK: UITableViewDataSource
@@ -62,7 +61,7 @@ extension NewsListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: NewsTableViewCell.self, for: indexPath)
-        cell.configure(with: presenter.cellForRowAt(indexPathRow: indexPath.row))
+        cell.configure(with: presenter.cellForRowAt(indexPath.row))
         return cell
     }
 }

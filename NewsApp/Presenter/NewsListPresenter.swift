@@ -11,7 +11,7 @@ protocol NewsPresenting {
     var articles: [Article] { get }
     func viewDidLoad()
     func numberOfRows() -> Int
-    func cellForRowAt(indexPathRow: Int) -> Article
+    func cellForRowAt(_ indexPathRow: Int) -> Article
 }
 
 class NewsPresenter {
@@ -67,7 +67,7 @@ extension NewsPresenter: NewsPresenting {
         }
     }
     
-    func cellForRowAt(indexPathRow: Int) -> Article {
+    func cellForRowAt(_ indexPathRow: Int) -> Article {
         articles[indexPathRow]
     }
 }
