@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NewsDetailView {
+    func presentError(with message: String)
+}
+
 class NewsDetailViewController: UIViewController {
    
     // MARK: - Outlets
@@ -17,16 +21,19 @@ class NewsDetailViewController: UIViewController {
     
     // MARK: - Properties
     var article: Article?
+    private var presenter: NewsDetailPresenting!
    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = NewsDetailPresenter(view: self)
         configureArticle()
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        validateRating()
+        let rating = ratingTextField.text ?? "0"
+        presenter.saveButtonTapped(with: rating)
     }
 }
 
@@ -51,11 +58,7 @@ private extension NewsDetailViewController {
             }
         }
     }
-    
-    func validateRating() {
-        let allowedRatings = 1...5
-        let rating = Int(ratingTextField.text ?? "0")
-        let message = allowedRatings.contains(rating ?? 0) ? Constants.Strings.ratingMessageSucessful : Constants.Strings.ratingMessageFailed
-        presentError(with: message)
-    }
+}
+
+extension NewsDetailViewController: NewsDetailView {
 }
