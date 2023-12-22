@@ -143,6 +143,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		45D0E4682B35E86A00F0DBF1 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				45D0E4692B35E8B600F0DBF1 /* NewsList */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		45D0E4692B35E8B600F0DBF1 /* NewsList */ = {
+			isa = PBXGroup;
+			children = (
+				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
+				45D0E45E2B30A43500F0DBF1 /* NewsListPresenter.swift */,
+				45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */,
+			);
+			path = NewsList;
+			sourceTree = "<group>";
+		};
 		45DB63092AFA836700ACF1AA = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +184,7 @@
 		45DB63142AFA836800ACF1AA /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				45D0E4682B35E86A00F0DBF1 /* Feature */,
 				45DB63532AFAC03B00ACF1AA /* Common */,
 				45CB43F32AFBBC4300ABA00C /* Extensions */,
 				45DB63572AFAC09D00ACF1AA /* Networking */,
@@ -210,9 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				45CB43F02AFB97B800ABA00C /* NewsTableViewCell */,
-				45DB63192AFA836800ACF1AA /* NewsListViewController.swift */,
-				45D0E45E2B30A43500F0DBF1 /* NewsListPresenter.swift */,
-				45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */,
 				45DB631B2AFA836800ACF1AA /* Main.storyboard */,
 				45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */,
 			);

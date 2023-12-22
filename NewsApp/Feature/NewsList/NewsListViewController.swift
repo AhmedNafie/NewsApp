@@ -86,6 +86,4 @@ private extension NewsListViewController {
         newsTableView.delegate = self
         newsTableView.dataSource = self
     }
-    
-    
 }
