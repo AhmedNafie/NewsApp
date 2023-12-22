@@ -22,6 +22,7 @@
 		45CB43FA2AFBC0F000ABA00C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 45CB43F92AFBC0F000ABA00C /* IQKeyboardManagerSwift */; };
 		45CB44012AFBE8F100ABA00C /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CB44002AFBE8F100ABA00C /* UIViewController+showAlert.swift */; };
 		45D0E45F2B30A43500F0DBF1 /* NewsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0E45E2B30A43500F0DBF1 /* NewsListPresenter.swift */; };
+		45D0E4652B35CE1A00F0DBF1 /* NewsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */; };
 		45DB63162AFA836800ACF1AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63152AFA836800ACF1AA /* AppDelegate.swift */; };
 		45DB63182AFA836800ACF1AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63172AFA836800ACF1AA /* SceneDelegate.swift */; };
 		45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB63192AFA836800ACF1AA /* NewsListViewController.swift */; };
@@ -67,6 +68,7 @@
 		45CB43F62AFBBC8400ABA00C /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		45CB44002AFBE8F100ABA00C /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
 		45D0E45E2B30A43500F0DBF1 /* NewsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListPresenter.swift; sourceTree = "<group>"; };
+		45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListRouter.swift; sourceTree = "<group>"; };
 		45DB63122AFA836800ACF1AA /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DB63152AFA836800ACF1AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45DB63172AFA836800ACF1AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */,
 				45D0E45E2B30A43500F0DBF1 /* NewsListPresenter.swift */,
+				45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				45D0E45F2B30A43500F0DBF1 /* NewsListPresenter.swift in Sources */,
 				45CB43EE2AFB97A500ABA00C /* NewsTableViewCell.swift in Sources */,
 				45DB631A2AFA836800ACF1AA /* NewsListViewController.swift in Sources */,
+				45D0E4652B35CE1A00F0DBF1 /* NewsListRouter.swift in Sources */,
 				45DB634C2AFA994300ACF1AA /* NewsResponse.swift in Sources */,
 				45CB43F72AFBBC8400ABA00C /* NSObject+Extension.swift in Sources */,
 				456C4E702AFCCEE000C883B4 /* ArticleModel.xcdatamodeld in Sources */,

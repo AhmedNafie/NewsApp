@@ -11,15 +11,18 @@ protocol NewsPresenting {
     var articles: [Article] { get }
     func viewDidLoad()
     func numberOfRows() -> Int
-    func cellForRowAt(_ indexPathRow: Int) -> Article
+    func cellForRowAt(_ row: Int) -> Article
+    func didSelectRowAt(_ row: Int)
 }
 
 class NewsPresenter {
-    private var view: NewsListView!
+    private var view: NewsListView
+    private var router: NewsListRouting
     var articles: [Article] = []
     
-    init(view: NewsListView) {
+    init(view: NewsListView, router: NewsListRouting) {
         self.view = view
+        self.router = router
     }
 
     func fetchFromNetwork() {
@@ -69,5 +72,10 @@ extension NewsPresenter: NewsPresenting {
     
     func cellForRowAt(_ indexPathRow: Int) -> Article {
         articles[indexPathRow]
+    }
+    
+    func didSelectRowAt(_ row: Int) {
+        let article = articles[row]
+        router.goToNewsDetailVC(with: article)
     }
 }

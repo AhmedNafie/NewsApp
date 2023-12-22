@@ -27,7 +27,8 @@ class NewsListViewController: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = NewsPresenter(view: self)
+        let router = NewsListRouter(viewContoller: self)
+        presenter = NewsPresenter(view: self, router: router)
         setupTableView()
         presenter.viewDidLoad()
     }
@@ -70,7 +71,7 @@ extension NewsListViewController: UITableViewDataSource {
 extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        goToNewsDetailVC(with: indexPath.row)
+        presenter.didSelectRowAt(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,9 +87,5 @@ private extension NewsListViewController {
         newsTableView.dataSource = self
     }
     
-    func goToNewsDetailVC(with item: Int) {
-        let NewsDetailViewController = storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
-        NewsDetailViewController.article = presenter.articles[item]
-        navigationController?.pushViewController(NewsDetailViewController, animated: true)
-    }
+    
 }
