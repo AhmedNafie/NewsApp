@@ -8,7 +8,6 @@
 import Foundation
 
 protocol NewsPresenting {
-    var articles: [Article] { get }
     func viewDidLoad()
     func numberOfRows() -> Int
     func cellForRowAt(_ row: Int) -> Article

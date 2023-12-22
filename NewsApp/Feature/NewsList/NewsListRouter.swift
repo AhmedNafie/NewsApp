@@ -19,7 +19,8 @@ class NewsListRouter: NewsListRouting {
     
     func goToNewsDetailVC(with article: Article) {
         let newsDetailViewController = viewContoller.storyboard?.instantiateViewController(withIdentifier: NewsDetailViewController.className) as! NewsDetailViewController
-        newsDetailViewController.article = article
+        let presenter = NewsDetailPresenter(view: newsDetailViewController, article: article)
+        newsDetailViewController.presenter = presenter
         viewContoller.navigationController?.pushViewController(newsDetailViewController, animated: true)
     }
 }

@@ -147,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				45D0E4692B35E8B600F0DBF1 /* NewsList */,
+				45D0E46A2B35EF0500F0DBF1 /* NewsDetail */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -159,6 +160,15 @@
 				45D0E4642B35CE1A00F0DBF1 /* NewsListRouter.swift */,
 			);
 			path = NewsList;
+			sourceTree = "<group>";
+		};
+		45D0E46A2B35EF0500F0DBF1 /* NewsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */,
+				45D0E4662B35DA0400F0DBF1 /* NewsDetailPresenter.swift */,
+			);
+			path = NewsDetail;
 			sourceTree = "<group>";
 		};
 		45DB63092AFA836700ACF1AA = {
@@ -238,8 +248,6 @@
 		45DB63552AFAC07C00ACF1AA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				45CB43E42AFB679E00ABA00C /* NewsDetailViewController.swift */,
-				45D0E4662B35DA0400F0DBF1 /* NewsDetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";

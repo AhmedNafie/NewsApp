@@ -10,14 +10,22 @@ import UIKit
 
 protocol NewsDetailPresenting {
     func saveButtonTapped(with rating: String)
+    func viewDidLoad()
 }
 
 class NewsDetailPresenter: NewsDetailPresenting {
-    
+
+    private var article: Article
+
     private var view: NewsDetailView
     
-    init(view: NewsDetailView) {
+    init(view: NewsDetailView, article: Article) {
         self.view = view
+        self.article = article
+    }
+    
+    func viewDidLoad() {
+        view.setArticle(article: article)
     }
     
     func saveButtonTapped(with rating: String) {

@@ -9,10 +9,11 @@ import UIKit
 
 protocol NewsDetailView {
     func presentError(with message: String)
+    func setArticle(article: Article)
 }
 
 class NewsDetailViewController: UIViewController {
-   
+    
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
@@ -20,14 +21,12 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet weak var ratingTextField: UITextField!
     
     // MARK: - Properties
-    var article: Article?
-    private var presenter: NewsDetailPresenting!
-   
+    var presenter: NewsDetailPresenting!
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = NewsDetailPresenter(view: self)
-        configureArticle()
+        presenter.viewDidLoad()
     }
     
     // MARK: - Actions
@@ -37,28 +36,24 @@ class NewsDetailViewController: UIViewController {
     }
 }
 
-// MARK: Private methods
-private extension NewsDetailViewController {
-    func configureArticle() {
-        titleLabel.text = article?.title
-        contentLabel.text = article?.description
+extension NewsDetailViewController: NewsDetailView {
+    func setArticle(article: Article) {
+        titleLabel.text = article.title
+        contentLabel.text = article.description
         
-        if let image = DataPersistenceManager.shared.imagesCache[article?.title ?? ""] {
+        if let image = DataPersistenceManager.shared.imagesCache[article.title ?? ""] {
             newsImageView.image = image
         } else {
-            if let imagePath = article?.urlToImage {
+            if let imagePath = article.urlToImage {
                 guard let url = URL(string: imagePath) else { return }
                 NewsClient.requestImageFile(url: url) { [weak self] image, error in
                     guard let self = self else { return }
                     DispatchQueue.main.async {
                         self.newsImageView.image = image
                     }
-                    DataPersistenceManager.shared.imagesCache[self.article?.title ?? ""] = image
+                    DataPersistenceManager.shared.imagesCache[article.title ?? ""] = image
                 }
             }
         }
     }
-}
-
-extension NewsDetailViewController: NewsDetailView {
 }
