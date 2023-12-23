@@ -62,10 +62,10 @@ extension NewsPresenter: NewsPresenting {
     func viewDidLoad() {
         if Reachability.isConnectedToNetwork() {
             fetchFromNetwork()
-            view.setTitle(Constants.Strings.onlineTitle)
+            view.setTitle(with: Constants.Strings.onlineTitle)
         } else {
             fetchFromStore()
-            view.setTitle(Constants.Strings.offlineTitle)
+            view.setTitle(with: Constants.Strings.offlineTitle)
         }
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewsListView {
-    func setTitle(_ title: String)
+    func setTitle(with title: String)
     func startLoading()
     func stopLoading()
     func presentError(with message: String)
@@ -36,7 +36,7 @@ class NewsListViewController: UIViewController {
 // MARK: NewsListView
 extension NewsListViewController: NewsListView {
     
-    func setTitle(_ title: String) {
+    func setTitle(with title: String) {
         self.title = title
     }
     func startLoading() {

@@ -201,7 +201,6 @@
 				456C4E792AFD035200C883B4 /* DataPersistence */,
 				45DB63562AFAC08D00ACF1AA /* Model */,
 				45DB63542AFAC05500ACF1AA /* View */,
-				45DB63552AFAC07C00ACF1AA /* Presenter */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -243,13 +242,6 @@
 				45DB63202AFA836900ACF1AA /* LaunchScreen.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		45DB63552AFAC07C00ACF1AA /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		45DB63562AFAC08D00ACF1AA /* Model */ = {
